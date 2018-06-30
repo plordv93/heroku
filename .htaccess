@@ -1,0 +1,23 @@
+# BEGIN Url Rewrite section
+<IfModule mod_rewrite.c>
+	ErrorDocument 404 /pv/index.php
+	Options +FollowSymLinks -MultiViews -Indexes
+	RewriteEngine On 
+
+	#nginx
+	#RewriteCond %{HTTP_HOST} ^$ [OR] 
+	#RewriteCond %{HTTP_HOST} ^www.$
+
+	RewriteCond %{HTTP_*} ^$ [OR]  
+	RewriteCond %{HTTP_*} ^www.$
+	RewriteRule ^file-([A-Za-z0-9-]+)/([A-Za-z0-9-]+)\.pdf$ landing.php?id=$1&judul=$2 [L]
+
+	RewriteRule ^inde_sitemap.xml?$ sitemap.php?sitemap=main [L]
+	RewriteRule ^114561221545664212451sitemap_part([0-9]+).xml?$ sitemap.php?book=$1 [L]
+	<IfModule mod_deflate.c>
+		<FilesMatch "\.(php|js|css|mp3|wmv|flv|html|htm)$">
+			SetOutputFilter DEFLATE
+		</FilesMatch>
+	</IfModule>
+</IfModule>
+# END Url Rewrite section
