@@ -10,7 +10,7 @@ $titles = truncate($aad, 232, 40);
 
 error_reporting(0);
 ini_set('memory_limit','-1');
-require('/home/plordv3/fpdf/fpdf.php');
+require('fpdf/fpdf.php');
 
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
